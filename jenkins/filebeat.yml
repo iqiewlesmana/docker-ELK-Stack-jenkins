@@ -1,0 +1,10 @@
+filebeat.inputs:
+  prospectors:
+      input_type: "log"
+      paths:
+        - "/var/jenkins_home/jobs/*/builds/*/log"
+
+  output.elasticsearch:
+    hosts: ["elasticsearch:9200"]
+    indices:
+      - index: "filebeat-%{[agent.version]}-%{+yyyy.MM.dd}"
